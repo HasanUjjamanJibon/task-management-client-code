@@ -13,13 +13,15 @@ const MyTasks = () => {
   const [singleTask, setSingleTask] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/task?email=${user.email}`)
+    fetch(
+      `https://task-management-server-code.up.railway.app/task?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAllTask(data));
   }, [allTask]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/task/${id}`, {
+    fetch(`https://task-management-server-code.up.railway.app/task/${id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -40,11 +42,14 @@ const MyTasks = () => {
   };
 
   const handleComplete = (id) => {
-    fetch(`http://localhost:5000/taskstatus/${id}`, {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ status: "Completed" }),
-    })
+    fetch(
+      `https://task-management-server-code.up.railway.app/taskstatus/${id}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ status: "Completed" }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -59,7 +64,7 @@ const MyTasks = () => {
   };
 
   const handleSingleTaskView = (id) => {
-    fetch(`http://localhost:5000/task/${id}`)
+    fetch(`https://task-management-server-code.up.railway.app/task/${id}`)
       .then((response) => response.json())
       .then((data) => setSingleTask(data));
   };

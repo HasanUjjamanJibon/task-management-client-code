@@ -16,7 +16,7 @@ const AddTasks = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/task", {
+    fetch("https://task-management-server-code.up.railway.app/task", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

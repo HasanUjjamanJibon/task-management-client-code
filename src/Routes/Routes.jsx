@@ -47,7 +47,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/task/${params.id}`),
+          fetch(
+            `https://task-management-server-code.up.railway.app/task/${params.id}`
+          ),
       },
     ],
   },
